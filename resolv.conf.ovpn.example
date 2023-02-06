@@ -1,0 +1,4 @@
+# DNS settings for OVPN_LAN
+search xxxx.it         ; default domain
+nameserver 10.0.0.11	; primary dns
+nameserver 10.0.0.14    ; secondary dns

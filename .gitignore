@@ -1,0 +1,5 @@
+/vpn/credentials.txt
+/vpn/*.ovpn
+/vpn/resolv.conf.ovpn
+
+.idea

@@ -1,0 +1,20 @@
+#!/bin/sh
+OVPN_CONFIG_BASE_DIR="/app/vpn"
+
+OVPN_FILE="/app/vpn/client.ovpn"
+if [ ! -f "$OVPN_FILE" ] ; then
+    echo "File conf OpenVPN not found. Exiting."
+    exit 1
+fi
+
+# check creds file
+OVPN_CREDS_FILE="${OVPN_CONFIG_BASE_DIR}/credentials.txt"
+if [ ! -f "${OVPN_CREDS_FILE}" ] ; then
+    echo "FATAL | Credentials file does not exist, Exiting."
+    exit 1
+else
+	# secure creds file.. for what it's worth. 
+    chmod 600 ${OVPN_CREDS_FILE}
+fi
+
+openvpn --config $OVPN_FILE --auth-user-pass $OVPN_CREDS_FILE
